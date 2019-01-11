@@ -1,2 +1,2 @@
-# GroupProject1
-First group project for the GA Tech Bootcamp
+# My Next Meal
+An application that offers healthy recipes for the on the go, sort on time indivdual.
