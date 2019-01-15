@@ -1,0 +1,25 @@
+
+
+
+
+.jumbotron{
+    background-image: url("../images/th-3.jpg");
+    background-size: contain;
+    
+    
+   
+
+}
+.row2{
+    padding-top:40px;
+
+}
+.card{
+    background-color: #cc7622;
+
+}
+.row2{
+    background-color: #f3bb54;
+    padding:40%;
+    margin-top:20px;
+}
