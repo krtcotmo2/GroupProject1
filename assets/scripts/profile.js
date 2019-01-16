@@ -15,20 +15,22 @@ let saveProfile = (uid, email, name, alergies, likes, favorites) => {
           name: name,
           email: email
      })
-          .catch(function (error) {
-               errorMessage = error.errorMessage;
-               RetVal=  false;
-          });
-     db().ref(`users/${uid}/likes`).set(likes)
-          .catch(function (error) {
-               errorMessage = error.errorMessage;
-               RetVal=  false;
-          });
+     .catch(function (error) {
+          errorMessage = error.errorMessage;
+          RetVal=  false;
+     });
+
      db().ref(`users/${uid}/alergies`).set(alergies)
-          .catch(function (error) {
-               errorMessage = error.errorMessage;
-               RetVal=  false;
-          });
+     .catch(function (error) {
+          errorMessage = error.errorMessage;
+          RetVal=  false;
+     });
+
+     db().ref(`users/${uid}/likes`).set(likes)
+     .catch(function (error) {
+          errorMessage = error.errorMessage;
+          RetVal=  false;
+     });
      db().ref(`users/${uid}/favorites`).set(favorites)
           .catch(function (error) {
                errorMessage = error.errorMessage;
@@ -39,29 +41,49 @@ let saveProfile = (uid, email, name, alergies, likes, favorites) => {
 
      sessionStorage.setItem("user", JSON.stringify(user));
      sessionStorage.setItem("errorMessage", errorMessage);
+     
+     db().ref(`users/${user.uid}`).on("child_changed", function(childSnapshot, prevChildKey) {
+          console.table([childSnapshot, prevChildKey])
+     });
      return RetVal;
+}
+
+let popList = (arr, lst) =>{
+     arr.forEach((o)=>{
+          $(lst).append(`<li><i class="material-icons pr-2 align-middle">delete_forever</i>${o}</li>`);
+          
+     })
 }
 $(document).ready(function () {     
      user = JSON.parse(sessionStorage.getItem("user"));
      //TEMP CODEFOR TESTING
      user = {
-          uid: `msdAQhdKTBeL1NIXLNtqaOrL7P23`,
-          email: `krtcotmo2@gmail.com`,
-          name: ``,
-          alergies: [],
-          likes: [],
+          uid: "DhKhQDlzAQgYja4cMJsI3z2mmQC3",
+          email: `bkent@t-mobile.com`,
+          name: `Brian Kent`,
+          alergies: ["turkey"],
+          likes: ["onions", "seafood"],
           favorites: []
      }
-     errorMessage - sessionStorage.getItem("errorMessage");
-     
+     popList(user.likes, $(".favList"));
+     popList(user.alergies, $(".allergyList"));
+
+     errorMessage = sessionStorage.getItem("errorMessage");
+     $("#tboxName").val(user.name); 
      $("#tboxEmail").val(user.email);
 
      $("#btnAddLike").on("click", function () {
+          if($("#tboxLikes").val().trim() == ""){
+               return;
+          }
           $(".favList").append(`<li><i class="material-icons pr-2 align-middle">delete_forever</i>${$("#tboxLikes").val()}</li>`);
           user.likes.push( $("#tboxLikes").val().trim());
           $("#tboxLikes").val("");
      });
      $("#btnAddAllergy").on("click", function () {
+          if($("#tboxAllergies").val().trim() == ""){
+               return;
+          }
           $(".allergyList").append(`<li><i class="material-icons pr-2 align-middle">delete_forever</i>${$("#tboxAllergies").val()}</li>`);
           user.alergies.push( $("#tboxAllergies").val().trim());
           $("#tboxAllergies").val("");
@@ -88,15 +110,15 @@ $(document).ready(function () {
           }
           $(this).parent().remove();
      })
-
      $("#btnSubmit").on("click", function(evt){
           evt.preventDefault(); 
           user.name = $("#tboxName").val().trim();
           let saveSuccessful = saveProfile(user.uid, user.email, $("#tboxName").val().trim(), user.alergies, user.likes, user.favorites);
           if(saveSuccessful){
-               window.location.href = 'searchPage.html';
+               //window.location.href = 'searchPage.html';
           }else{
                console.log(errorMessage);
           }
      });
+     
 });
