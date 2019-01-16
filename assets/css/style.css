@@ -1,0 +1,7 @@
+.navbar {
+background: #2493b0;
+}
+
+.allergyList i, .favList i{
+cursor:pointer
+}
