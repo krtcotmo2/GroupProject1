@@ -115,7 +115,7 @@
 }
 
 #notifications {
-  background-color: #FFFFFF;
+  background: none;
   display: block;
   width: 100%;
   position: relative;
