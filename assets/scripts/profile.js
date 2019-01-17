@@ -65,15 +65,7 @@ let popList = (arr, lst) =>{
 }
 $(document).ready(function () {     
      user = JSON.parse(sessionStorage.getItem("user"));
-     //TEMP CODEFOR TESTING
-     user = {
-          uid: "DhKhQDlzAQgYja4cMJsI3z2mmQC3",
-          email: `bkent@t-mobile.com`,
-          name: `Brian Kent`,
-          alergies: ["turkey"],
-          likes: ["onions", "seafood"],
-          favorites: []
-     }
+     
      popList(user.likes, $(".favList"));
      popList(user.alergies, $(".allergyList"));
 
