@@ -19,12 +19,17 @@ let createUser =  (email, password) => {
           }).then(function(data){
                sessionStorage.setItem("user", JSON.stringify(user));
                sessionStorage.setItem("errorMessage", errorMessage);
-               window.location.assign("http://google.com")
+               window.location.assign("profile.html")
           }) .catch(function (error) {
                // Handle Errors here.
                errorMessage = error.message;
                sessionStorage.setItem("errorMessage", errorMessage);
-              return false;
+               let mod = `<div class="modal" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true"><div class="modal-dialog" role="document"><div class="modal-content"><div class="modal-header"><h5 class="modal-title" id="exampleModalLabel">Login Error</h5><button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button></div><div class="modal-body">${errorMessage}</div> <div class="modal-footer"><button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button><button type="button" class="btn btn-primary">Save changes</button></div></div></div></div>`;
+               $("body").append(mod);
+               $("#exampleModal").modal('show');
+               $("#exampleModal").on('hidden.bs.modal', function () {
+                   $(this).remove();
+               });
           });
           //db().ref(`users/${returnVal.user.uid}/lastLogin`).push(firebase.database.ServerValue.TIMESTAMP)
           //db().ref(`users/${returnVal.user.uid}/alergies`).push(``)
@@ -34,17 +39,17 @@ let createUser =  (email, password) => {
           // Handle Errors here.
           errorMessage = error.message;
           sessionStorage.setItem("errorMessage", errorMessage);
-         return false;
+          sessionStorage.setItem("errorMessage", errorMessage);
+               let mod = `<div class="modal" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true"><div class="modal-dialog" role="document"><div class="modal-content"><div class="modal-header"><h5 class="modal-title" id="exampleModalLabel">Login Error</h5><button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button></div><div class="modal-body">${errorMessage}</div> <div class="modal-footer"><button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button></div></div></div></div>`;
+               $("body").append(mod);
+               $("#exampleModal").modal('show');
+               $("#exampleModal").on('hidden.bs.modal', function () {
+                   $(this).remove();
+               });
      })
 
 }
 
 $(document).ready(function (evt) {
-     $("#btnLogin").on("click", function (evt) {
-          evt.preventDefault();
-          let email = $("#tboxLogEmail").val().trim();
-          let password = $("#tboxLogPass").val();
-          //send username and password for auth
-          createUser(email, password);
-     })
+
 });
