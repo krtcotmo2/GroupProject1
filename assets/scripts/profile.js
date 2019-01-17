@@ -58,14 +58,6 @@ let popList = (arr, lst) => {
 $(document).ready(function () {
      user = JSON.parse(sessionStorage.getItem("user"));
 
-     user={
-          name:"",
-          uid:99999,
-          email:"something",
-          likes:[],
-          alergies:[],
-          favorites:[]
-     }
      popList(user.likes, $(".favList"));
      popList(user.alergies, $(".allergyList"));
 
