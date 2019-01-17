@@ -6,7 +6,14 @@ let errorMessage, user = {
      likes: [],
      favorites: []
 }
-
+let showError = (title, body)=>{
+     let mod = `<div class="modal" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true"><div class="modal-dialog" role="document"><div class="modal-content"><div class="modal-header"><h5 class="modal-title" id="exampleModalLabel">${title}</h5><button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button></div><div class="modal-body" >${body} </div> <div class="modal-footer"><button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button></div></div></div></div>`;
+     $("body").append(mod);
+     $("#exampleModal").modal('show');
+     $("#exampleModal").on('hidden.bs.modal', function () {
+          $(this).remove();
+      });
+}
 let saveProfile = (uid, email, name, alergies, likes, favorites) => {
      let RetVal = true;
      sessionStorage.setItem("user", null);
@@ -17,24 +24,28 @@ let saveProfile = (uid, email, name, alergies, likes, favorites) => {
      })
      .catch(function (error) {
           errorMessage = error.errorMessage;
-          RetVal=  false;
+          showError('Error in saving name and email');
+          return;
      });
 
      db().ref(`users/${uid}/alergies`).set(alergies)
      .catch(function (error) {
           errorMessage = error.errorMessage;
-          RetVal=  false;
+          showError('Error in updating allergies');
+          return;
      });
 
      db().ref(`users/${uid}/likes`).set(likes)
      .catch(function (error) {
           errorMessage = error.errorMessage;
-          RetVal=  false;
+          showError('Error in saving favorite ingredients');
+          return;
      });
      db().ref(`users/${uid}/favorites`).set(favorites)
           .catch(function (error) {
                errorMessage = error.errorMessage;
-               RetVal=  false;
+               showError('Error in saving favotire recipes');
+               return;
           });
           
      //need some code that looks at any changes in the profile data and seets the user obj to that data
@@ -42,10 +53,8 @@ let saveProfile = (uid, email, name, alergies, likes, favorites) => {
      sessionStorage.setItem("user", JSON.stringify(user));
      sessionStorage.setItem("errorMessage", errorMessage);
      
-     db().ref(`users/${user.uid}`).on("child_changed", function(childSnapshot, prevChildKey) {
-          console.table([childSnapshot, prevChildKey])
-     });
-     return RetVal;
+     
+     window.location.assign("search.html");
 }
 
 let popList = (arr, lst) =>{
