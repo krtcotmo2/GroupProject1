@@ -8,7 +8,6 @@ let errorMessage, user = {
 }
 
 
-let createUser =  (email, password) => {
 
 let logInUser = (email, password) => {
      sessionStorage.setItem("user", null);
