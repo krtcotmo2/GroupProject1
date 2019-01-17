@@ -7,7 +7,47 @@ let errorMessage, user = {
      favorites: []
 }
 
+
 let createUser =  (email, password) => {
+
+let logInUser = (email, password) => {
+     sessionStorage.setItem("user", null);
+     sessionStorage.setItem("errorMessage", null);
+     auth().signInWithEmailAndPassword(email, password)
+     .then(function (returnVal) {
+          user.uid = returnVal.user.uid;
+          //db().ref(`users/${returnVal.user.uid}/lastLogin`).push(firebase.database.ServerValue.TIMESTAMP)
+          db().ref(`users/${returnVal.user.uid}`).once("value")
+               .then(function (returnVal) {
+                    user.name = returnVal.val().name;
+                    user.email = returnVal.val().email;
+                    let likesObj = returnVal.val().likes;
+                    user.likes = likesObj === undefined ? [] : Object.keys(likesObj)
+                         .map(function (key) { return likesObj[key].toLowerCase(); })
+                         .filter(function (el) { return el != null && el != ""; });
+                    let alergyObj = returnVal.val().alergies;
+                    user.alergies = alergyObj === undefined ? [] : Object.keys(alergyObj)
+                         .map(function (key) { return alergyObj[key].toLowerCase(); })
+                         .filter(function (el) { return el != null && el != ""; });
+                    sessionStorage.setItem("user", JSON.stringify(user));
+                    sessionStorage.setItem("errorMessage", errorMessage);
+                    return true;
+               })
+               .catch(function (error) {
+                    errorMessage = error.message;
+                    sessionStorage.setItem("errorMessage", errorMessage);
+                    return false;
+               })
+     })
+     .catch(function (error) {
+          errorMessage = error.message;
+          sessionStorage.setItem("errorMessage", errorMessage);
+          return false;
+     });
+}
+
+let createUser = (email, password) => {
+
      sessionStorage.setItem("user", null);
      sessionStorage.setItem("errorMessage", null);
      let retVal =  auth().createUserWithEmailAndPassword(email, password)
