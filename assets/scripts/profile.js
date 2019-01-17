@@ -90,10 +90,6 @@ $(document).ready(function () {
           }
      });
 
-     $("#mapsButton").on("click", function () {
-          getLocation();
-     })
-
      $(document).on("click", "i", function (evt) {
           if ($(this).parent().parent().attr("class") == "favList") {
                let char = $(this)[0].nextSibling.data

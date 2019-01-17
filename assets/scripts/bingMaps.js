@@ -1,6 +1,10 @@
 /* NEEDS TO BE PLACED ON THE PAGE FOR RECIPE RESULTS OR INGREDIENTS
  <script type='text/javascript' src='https://www.bing.com/api/maps/mapcontrol'></script>
 */
+$("#mapsButton").on("click", function () {
+     getLocation();
+})
+
 
 let apiKey;
 
