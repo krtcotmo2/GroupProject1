@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 
 
 /*!
@@ -7227,4 +7228,16 @@
     background-color: #f3bb54;
     padding:40%;
     margin-top:20px;
+=======
+.navbar {
+background: #2493b0;
+}
+
+.allergyList i, .favList i{
+cursor:pointer;
+}
+.NavBar_MapTypeButtonContainerWrapper{display:none;}
+#myMap {
+     min-height:400px;
+>>>>>>> d6697bd2375697ec4f40136dab6d2d89d9700d93
 }
