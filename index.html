@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+     <meta charset="UTF-8">
+     <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
+     <meta http-equiv="X-UA-Compatible" content="ie=edge">
+     <link rel="stylesheet" href="./assets/css/reset.css">
+     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO"
+          crossorigin="anonymous">
+     <link href="./assets/css/now-ui-kit.css?v=1.2.0" rel="stylesheet" />
+     <link rel="stylesheet" href="./assets/css/style.css">
+</head>
+
+<body>
+
+
+
+     <!-- Jumbotron for Header -->
+
+     <div class="jumbotron jumbotron-fluid text-center">
+          <div class="container">
+               <h1 class="display-1">My Next Meal</h1>
+               <p>------------------------------------</p>
+               <h2>Find the options you are looking for in the boxes below</h2>
+          </div>
+     </div>
+
+     <!---Card Container---------->
+     <div class="album py-5 bg-light">
+          <div class="container">
+
+               <div class="row">
+                    <div class="col-md-4">
+                         <div class="card" style="width: 18rem;">
+                              <img src="../GroupProject1/assets/images/th-1.jpg" class="card-img-top" alt="Multiple Bowls Of Ingredients">
+                              <div class="card-body">
+                                   <h5 class="card-title text-center">Search</h5>
+                                   <p class="card-text text-center">Tell us what you are looking for</p>
+                              </div>
+                              <div class="form-group">
+                                   <input type="text" class="form-control" placeholder="Search">
+                              </div>
+                              <button type="submit" class="btn btn-secondary">Submit</button>
+                              </form>
+                         </div>
+                    </div>
+
+                    <div class="col-md-4">
+                         <div class="card" style="width: 18rem;">
+                              <img src="../GroupProject1/assets/images/buying-healthy-foods-ft-blog0617.jpg" class="card-img-top"
+                                   alt="Assorted food Ingredients">
+                              <div class="card-body">
+                                   <h5 class="card-title"><i class="fa fa-random" aria-hidden="true"></i></h5>
+                                   <h5 class="card-title text-center">Random</h5>
+                                   <p class="card-text text-center">Choose a Random Recipe from our Database</p>
+                              </div>
+                              <div class="dropdown show col-sm-12">
+                                   <a class="btn btn-secondary dropdown-toggle text-center" href="#" role="button" id="dropdownMenuLink"
+                                        data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                        Random List
+                                   </a>
+
+                                   <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
+                                        <a class="dropdown-item" href="#">Random</a>
+                                        <a class="dropdown-item" href="#">Random from Favorites</a>
+                                        <a class="dropdown-item" href="#">Random Vegaterian</a>
+                                   </div>
+                              </div>
+                         </div>
+
+                    </div>
+
+                    <div class="col-md-4">
+                         <div class="card" style="width: 18rem;">
+                              <img src="../GroupProject1/assets/images/th.jpg" class="card-img-top" alt="Assortment of Ingredients">
+                              <div class="card-body">
+                                   <h5 class="card-title text-center">Category</h5>
+                                   <p class="card-text text-center">Choose from a Main Category</p>
+                              </div>
+
+                              <div class="dropdown show">
+                                   <a class="btn btn-secondary dropdown-toggle" href="#" role="button" id="dropdownMenuLink"
+                                        data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                        Category List
+                                   </a>
+
+                                   <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
+                                        <a class="dropdown-item" href="#">Gluten Free</a>
+                                        <a class="dropdown-item" href="#">Vegan</a>
+                                        <a class="dropdown-item" href="#">Paleo</a>
+                                        <a class="dropdown-item" href="#">Low Carb</a>
+                                        <a class="dropdown-item" href="#">Dairy Free</a>
+                                        <a class="dropdown-item" href="#">Wheat Free</a>
+                                        <a class="dropdown-item" href="#">Fat Free</a>
+                                        <a class="dropdown-item" href="#">Egg Free</a>
+                                        <a class="dropdown-item" href="#">Vegetarian</a>
+                                        <a class="dropdown-item" href="#">Sugar Free</a>
+                                        <a class="dropdown-item" href="#">Tree Nut Free</a>
+                                        <a class="dropdown-item" href="#">Soy Free</a>
+                                        <a class="dropdown-item" href="#">Fish Free</a>
+                                        <a class="dropdown-item" href="#">Shell Fish Free</a>
+
+                                   </div>
+                              </div>
+                         </div>
+                    </div>
+                    <div class="row2">
+
+                         <div class="container">
+                              <h2>Recipe:</h2>
+                              <div class="panel panel-default">
+                                   <div id="panel-body">Recipes Bin!</div>
+                              </div>
+                         </div>
+                    </div>
+
+
+
+
+
+
+
+                    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
+                         crossorigin="anonymous"></script>
+                    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49"
+                         crossorigin="anonymous"></script>
+                    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy"
+                         crossorigin="anonymous"></script>
+                    <script type='text/javascript'>
+
+
+                    </script>
+</body>
+
+</html>
