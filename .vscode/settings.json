@@ -1,7 +1,9 @@
 {
-    "workbench.colorCustomizations": {
-        "activityBar.background": "#113427",
-        "titleBar.activeBackground": "#174837",
-        "titleBar.activeForeground": "#F4FBF8"
-    }
-}
+     "workbench.iconTheme": "material-icon-theme",
+     "workbench.colorTheme": "Visual Studio Light",
+     "window.zoomLevel": 0,
+     "files.autoSave": "off",
+ "editor.tabSize": 5,
+ "editor.detectIndentation": false,
+ "git.enableSmartCommit": true
+ }
