@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="en" style="background-image:url('./assets/images/background.gif')">
+<head>
+     <meta charset="UTF-8">
+     <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
+     <meta http-equiv="X-UA-Compatible" content="ie=edge">
+     <link rel="stylesheet" href="./assets/css/reset.css">
+     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+     <link rel="stylesheet" href="./assets/css/style.css">
+</head>
+<body>
+     <nav class="navbar navbar-expand-lg navbar-dark" style="background-color: #2493b0;">
+          <a class="navbar-brand" href="#">My Next Meal</a>
+          <!-- <img src="./assets/images/background.gif" width="30" height="30" alt=""> -->
+          <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarTogglerDemo02"
+               aria-controls="navbarTogglerDemo02" aria-expanded="false" aria-label="Toggle navigation">
+               <span class="navbar-toggler-icon"></span>
+          </button>
+
+          <div class="collapse navbar-collapse" id="navbarTogglerDemo02">
+               <ul class="navbar-nav mr-auto mt-2 mt-lg-0">
+                    <li class="nav-item active">
+                         <a class="nav-link" href="search.html">Home<span class="sr-only">(current)</span></a>
+                    </li>
+                    <li class="nav-item">
+                         <a class="nav-link" href="categories.html">Categories</a>
+                    </li>
+                    <li class="nav-item">
+                         <a class="nav-link" href="search.html">Search by Ingredient</a>
+                    </li>
+                    <li class="nav-item">
+                         <a class="nav-link" href="random.html">Random Search</a>
+                    </li>
+                    <li class="nav-item">
+                         <button type="button" class="nav-link bg-transparent border-0" id="mapsButton">Maps</button>
+                         <!-- <button type="button" id="submitProf" class="btn btn-warning">Submit</button> -->
+                    </li>
+                    <li class="nav-item">
+                         <a class="nav-link" href="aboutUs.html">About Us</a>
+                    </li>
+               </ul>
+
+          </div>
+     </nav>
+     <div class="container" id="mainContainer">
+
+          <div class="row">
+              <div class="col-md-3">
+                  <div>
+                      <div class="panel panel-default">
+                          <div class="panel-heading">
+                              <h3>Search for ingredients</h3>
+                          </div>
+                          <div class="panel-body">
+                              <form>
+                                  <div class="form-group">
+                                      <!-- <input type="search" class="form-control" id="ingredientsSearchBar" placeholder="Ex. Spinach"> -->
+                                      <select class=" my-3 custom-select">
+                                        <option value="0">Choose an option</option>
+                                        <option value="vegan">Vegan</option>
+                                        <option value="vegetarian">Vegetarian</option>
+                                        <option value="paleo">Paleo</option>
+                                        <option value="dairy-free">Dairy-free</option>
+                                        <option value="gluten-free">Gluten-free</option>
+                                        <option value="wheat-free">Wheat-free</option>
+                                        <option value="fat-free">Fat-free</option>
+                                        <option value="low-sugar">Low-sugar</option>
+                                        <option value="egg-free">Egg-free</option>
+                                        <option value="peanut-free">Peanut-free</option>
+                                        <option value="tree-nut-free">Tree-nut-free</option>
+                                        <option value="soy-free">Soy-free</option>
+                                        <option value="fish-free">Fish-free</option>
+                                        <option value="shellfish-free">Shellfish-free</option>
+
+                                      </select>
+                                      
+                                      <button type="submit" class="btn btn-default" id="ingredientsSearchBtn">Search</button>
+                                  </div>
+                              </form>
+                          </div>
+                      </div>
+                      <div class="panel-group" id="accordion" role="tablist" aria-multiselectable="true">
+                          <div class="panel panel-default">
+                              <div class="panel-heading" role="tab" id="headingOne">
+                                  <h4 class="panel-title">
+                                      <a role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseOne"
+                                          aria-expanded="true" aria-controls="collapseOne">
+                                          Current ingredients (<span id="numIngredients">0</span>)
+                                      </a>
+                                  </h4>
+                              </div>
+                              <div id="collapseOne" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingOne">
+                                  <div class="panel-body" id="ingredients-list"></div>
+                              </div>
+                          </div>
+                      </div>
+                     <div><p class="search-update-text" aria-live="assertive"></p></div> 
+                  </div>
+  
+              </div>
+              <div class="col-md-9">
+                  <div id="displayRecipe" class="col-md-12">
+                      <img class="recipeDisplayBckGround" src="./assets/images/MainPic.jpg">
+                  </div>
+              </div>
+          </div>
+          <div class="row">
+              <div class="col-md-12">
+  
+                  <div class="panel panel-default">
+                  </div>
+  
+              </div>
+          </div>
+      </div>
+  
+      <div class="bottomPicCont">
+          <h5>&#169; 2019 MNM </h5>
+          <img class="bottomPic" alt="MNM!" src="./assets/images/MNM.jpg">
+      </div>
+
+
+     <script src="./assets/scripts/checkUser.js"></script>
+     <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
+          crossorigin="anonymous"></script>
+     <script src='https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js'></script>
+     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49"
+          crossorigin="anonymous"></script>
+     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy"
+          crossorigin="anonymous"></script>
+     <script src="https://www.gstatic.com/firebasejs/5.7.3/firebase.js"></script>
+     <script type='text/javascript' src='https://www.bing.com/api/maps/mapcontrol'></script>
+     <script src="./assets/scripts/fbControls.js"></script>
+     <script src="./assets/scripts/favorites.js"></script>
+     <script src="./assets/scripts/bingMaps.js"></script>
+</body>
+</html>
