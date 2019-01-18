@@ -2,7 +2,8 @@ html{
     background-repeat: no-repeat;
     background-size: cover;
 }
-body{background: none;}
+body{background: none;
+color:#e9c44a !important;}
 
 @media screen and (max-width: 992px) {
   html {
