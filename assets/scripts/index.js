@@ -62,6 +62,7 @@ let createUser = (email, password) => {
      let retVal = auth().createUserWithEmailAndPassword(email, password)
           .then(function (returnVal) {
                user.uid = returnVal.user.uid;
+               user.email = returnVal.user.email;
                db().ref(`users/${returnVal.user.uid}`).set({
                     name: ``,
                     email: returnVal.user.email
