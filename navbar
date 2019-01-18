@@ -1,0 +1,36 @@
+<nav class="navbar navbar-expand-lg navbar-dark" style="background-color: #2493b0;">
+          <a class="navbar-brand" href="#">My Next Meal</a>
+          <!-- <img src="./assets/images/background.gif" width="30" height="30" alt=""> -->
+          <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarTogglerDemo02"
+               aria-controls="navbarTogglerDemo02" aria-expanded="false" aria-label="Toggle navigation">
+               <span class="navbar-toggler-icon"></span>
+          </button>
+
+          <div class="collapse navbar-collapse" id="navbarTogglerDemo02">
+               <ul class="navbar-nav mr-auto mt-2 mt-lg-0">
+                    <li class="nav-item active">
+                         <a class="nav-link" href="#">Home<span class="sr-only">(current)</span></a>
+                    </li>
+                    <li class="nav-item">
+                         <a class="nav-link" href="#">Categories</a>
+                    </li>
+                    <li class="nav-item">
+                         <a class="nav-link" href="#">Search by Ingredient</a>
+                    </li>
+                    <li class="nav-item">
+                         <a class="nav-link" href="#">Random Search</a>
+                    </li>
+                    <li class="nav-item">
+                         <button type="button" class="nav-link" id="mapsButton">Maps</button>
+                         <!-- <button type="button" id="submitProf" class="btn btn-warning">Submit</button> -->
+                    </li>
+                    <li class="nav-item">
+                         <a class="nav-link" href="#">About Us</a>
+                    </li>
+               </ul>
+               <form class="form-inline my-2 my-lg-0">
+                    <input class="form-control mr-sm-2" type="search" placeholder="Search">
+                    <button class="btn btn-outline-warning my-2 my-sm-0" type="submit">Search</button>
+               </form>
+          </div>
+     </nav>
