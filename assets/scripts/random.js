@@ -78,9 +78,17 @@ function displayRecipes() {
                          .addClass('btn')
                     // let favoriteBtn = $('far fa-heart')
                     // favoriteBtnDiv.addClass('far fa-heart');
+                    let itemIsFav = user.favorites.includes(results[i].recipe.url) ? true : false;
                     let favoriteBtn = $('<button>')
-                         .addClass('glyphicon glyphicon-heart-empty')
-                         .attr('id', results[i].recipe.label)
+                    .addClass(itemIsFav ? 'glyphicon glyphicon-heart':'glyphicon glyphicon-heart-empty')
+                    .attr('id', results[i].recipe.label)
+                    
+                    
+                    
+                    
+                    //let favoriteBtn = $('<button>')
+                    //     .addClass('glyphicon glyphicon-heart-empty')
+                    //     .attr('id', results[i].recipe.label)
                     // recipeBtnDiv.append(favoriteBtnDiv.addClass('heart fa fa-heart-o'));
                     recipeBtnDiv.append(activityBtn)
                     recipeBtnDiv.append(favoriteBtn)
@@ -168,6 +176,36 @@ function displayRecipes() {
                          }
                     }
                })
+               
+               
+               
+               
+               
+               $(".glyphicon").on("click", function () {
+                    let recId = $(this)
+                         .parent()
+                         .find("a")
+                         .attr("href");
+                    let addItem = $(this).hasClass("glyphicon-heart-empty");
+                    if (addItem) {
+                         $(this).removeClass("glyphicon-heart-empty");
+                         $(this).addClass("glyphicon-heart");
+                         user.favorites.push(recId);
+                    } else {
+                         $(this).addClass("glyphicon-heart-empty");
+                         $(this).removeClass("glyphicon-heart");
+                         let rId2 = recId;
+                         user.favorites = user.favorites.filter(function (o) {
+                              return o != rId2;
+                         });
+                    }
+                    sessionStorage.setItem("errorMessage", null);
+                    let theUID = user.uid;
+                    saveFavorite(theUID, recId, addItem);
+                    sessionStorage.setItem("user", JSON.stringify(user));
+               });
+               
+               
                $('#numIngredients').html(searchIngredients.length)
                for (let j = 0; j < searchIngredients.length; j++) {
                     let ingredientDiv = $('<div>')
