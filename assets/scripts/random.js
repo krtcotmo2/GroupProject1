@@ -2,8 +2,12 @@ const appId = '1ca7c14f'
 const appKey = '6ad5a627d4938d3b00d919649e31dc4d'
 const url = 'https://api.edamam.com/search?'
 
-let searchIngredient = ['zinfandel wine','artichokes','chicken','steak']
+let searchIngredients = []
 
+// function displayFailureText() {
+//     let buildTheHtmlOutput = "Sorry! We did not find any recipes for your query"
+//     $(".search-update-text").html(buildTheHtmlOutput);
+// }
 // CORS Anywhere is a node.js proxy
 $.ajaxPrefilter(function (options) {
   if (options.crossDomain && jQuery.support.cors) {
@@ -17,54 +21,26 @@ $(document).ready(function () {
   $('.modal').modal()
 })
 
-function shuffle(array) {
-  var currentIndex = array.length, temporaryValue, randomIndex;
-
-  // While there remain elements to shuffle...
-  while (0 !== currentIndex) {
-
-    // Pick a remaining element...
-    randomIndex = Math.floor(Math.random() * currentIndex);
-    currentIndex -= 1;
-
-    // And swap it with the current element.
-    temporaryValue = array[currentIndex];
-    array[currentIndex] = array[randomIndex];
-    array[randomIndex] = temporaryValue;
-  }
-
-  return array;
-}
-
-searchIngredient = shuffle(searchIngredient);
-
-
-let searchIngredients = searchIngredient[Math.floor(Math.random()*searchIngredient.length)];
-
-function randomDisplayRecipes(sIngredient){
-  sIngredient = shuffle(sIngredient);
-
-
-let sIngredients = sIngredient[Math.floor(Math.random()*sIngredient.length)];
-displayRecipes(sIngredients)
-
-}
-
-
 function displayRecipes () {
   // url: 'https://api.edamam.com/search?q=' + searchIngredients + '&app_id=1ca7c14f&app_key=6ad5a627d4938d3b00d919649e31dc4d'
   // url: `${url}q=${searchIngredients}&app_id=${appId}&app_key=${appKey}`
   $.ajax({
-    url:
-      'https://api.edamam.com/search?q=' +
-      searchIngredients +
-      '&app_id=1ca7c14f&app_key=6ad5a627d4938d3b00d919649e31dc4d'
+	url: `${url}q=${searchIngredients}&app_id=${appId}&app_key=${appKey}`
   }).then(function (response) {
-    let intCalories =
+	if (response.count == 0) {
+		// displayFailureText();
+		$("#displayRecipe").hide();
+		$(".search-update-text").show();
+		alert("Sorry! We did not find any recipes for your query");
+		location.reload();
+		
+} else {
+	
+	let intCalories =
       response.hits[0].recipe.calories / response.hits[0].recipe.yield
     let calories = Math.floor(intCalories)
     let results = response.hits
-
+     
     $('#displayRecipe').html('')
 
     for (i = 0; i < results.length; i++) {
@@ -99,13 +75,16 @@ function displayRecipes () {
       )
       // favoriteBtnDiv.addClass('heart fa fa-heart-o').toggleClass('heart fa fa-heart-o');
       let activityBtn = $('<button>')
-        .text('Fun Activity')
-        .addClass('btn')
+      .text('Fun Activity')
+      .addClass('btn')
       // let favoriteBtn = $('far fa-heart')
       // favoriteBtnDiv.addClass('far fa-heart');
+
+      //does results[i].recipe.url exist in user.favorites - if yes use heart icon if no use enmpty heart icon
+      let itemIsFav = user.favorites.includes(results[i].recipe.url) ? true : false;
       let favoriteBtn = $('<button>')
-        .addClass('glyphicon glyphicon-heart-empty')
-        .attr('id', results[i].recipe.label)
+      .addClass(itemIsFav ? 'glyphicon glyphicon-heart':'glyphicon glyphicon-heart-empty')
+.attr('id', results[i].recipe.label)
       // recipeBtnDiv.append(favoriteBtnDiv.addClass('heart fa fa-heart-o'));
 
       recipeBtnDiv.append(activityBtn)
@@ -164,6 +143,27 @@ function displayRecipes () {
         })
       }
     }
+    $('.glyphicon').on("click", function(){
+      let recId = $(this).parent().find("a").attr("href");
+      let addItem = $(this).hasClass("glyphicon-heart-empty");  
+      if(addItem){
+           $(this).removeClass("glyphicon-heart-empty");
+           $(this).addClass("glyphicon-heart");
+           user.favorites.push(recId);
+      } else{
+           $(this).addClass("glyphicon-heart-empty");
+           $(this).removeClass("glyphicon-heart");
+           let rId2 = recId;
+           user.favorites = user.favorites.filter(function(o){
+                return o != rId2;
+           });
+      }            
+      sessionStorage.setItem("errorMessage", null);          
+      saveFavorite(user.uid, recId, addItem);
+      sessionStorage.setItem("user", JSON.stringify(user));
+ });    
+
+
     // $('button').on('click', function () {
     //   let recId = this.id
     //   console.log(recId)
@@ -196,26 +196,78 @@ function displayRecipes () {
     	}
 
       })
-  
-  })
+    $('#numIngredients').html(searchIngredients.length)
+    for (let j = 0; j < searchIngredients.length; j++) {
+      let ingredientDiv = $('<div>')
+        .text(searchIngredients[j])
+        .addClass('currentIngredient').attr('name',searchIngredients[j])
+      let ingredientClose = $('<button>')
+        .text('X')
+        .addClass('ingredientListBtn btn')
+        .attr('name', searchIngredients[j])
+      ingredientDiv.append(ingredientClose)
+      $('#ingredients-list').prepend(ingredientDiv)
+    }
+  }})
 }
 
 $('#ingredientsSearchBtn').on('click', function (event) {
   event.preventDefault()
   
+       
   let ingredient = $('#ingredientsSearchBar')
     .val()
     .trim()
   // let ingredientStr = String(ingredient);
-  let searchIngredients1 = searchIngredient[Math.floor(Math.random()*searchIngredient.length)];
-  console.log(searchIngredients1)
-randomDisplayRecipes(searchIngredients1)
-
-  
-  
+  if (ingredient == "") {
+	alert("Please enter ingredients to see the recipes");
+} else {
+  searchIngredients.push(ingredient)
   $('#ingredientsSearchBar').val('')
   $('#ingredients-list').empty()
-  
+  displayRecipes()
+  console.log(searchIngredients)}
 })
 
+$(document).on('click', '#ingredientsRandomBtn', function (event) {
+    event.preventDefault()
+   console.log($('.currentIngredient').text(name) )
+    let randomIngredients = ['zinfandel wine','artichokes','chicken','steak']
+    let randomIngredient = randomIngredients[Math.floor(Math.random()*randomIngredients.length)];
+    // let ingredient = $('#ingredientsSearchBar')
+    //   .val()
+    //   .trim()
+    // let ingredientStr = String(ingredient);
+   
+        console.log(searchIngredients.push(randomIngredient))
+        $('#ingredientsSearchBar').val('')
+        $('#ingredients-list').empty()
+        displayRecipes()
+        console.log($('.currentIngredient').name) 
 
+   
+    console.log(randomIngredients)
+  })
+
+$(document).on('click', '.ingredientListBtn', function () {
+  let searchName = this.name
+
+  for (let k = searchIngredients.length - 1; k >= 0; k--) {
+    if (searchIngredients[k] === searchName) {
+      searchIngredients.splice(k, 1)
+      break
+    }
+  }
+  console.log(searchIngredients)
+  $('#ingredients-list').empty()
+  $('#displayRecipe').empty()
+  if (searchIngredients.length >= 1) {
+    displayRecipes()
+  } else {
+    $('#numIngredients').html('0')
+    let recipeBckGound = $('<img>')
+      .attr('src', 'images/MainPic.jpg')
+      .addClass('recipeDisplayBckGround img-responsive')
+    $('#displayRecipe').append(recipeBckGound)
+  }
+})
