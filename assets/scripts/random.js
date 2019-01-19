@@ -75,13 +75,16 @@ function displayRecipes () {
       )
       // favoriteBtnDiv.addClass('heart fa fa-heart-o').toggleClass('heart fa fa-heart-o');
       let activityBtn = $('<button>')
-        .text('Fun Activity')
-        .addClass('btn')
+      .text('Fun Activity')
+      .addClass('btn')
       // let favoriteBtn = $('far fa-heart')
       // favoriteBtnDiv.addClass('far fa-heart');
+
+      //does results[i].recipe.url exist in user.favorites - if yes use heart icon if no use enmpty heart icon
+      let itemIsFav = user.favorites.includes(results[i].recipe.url) ? true : false;
       let favoriteBtn = $('<button>')
-        .addClass('glyphicon glyphicon-heart-empty')
-        .attr('id', results[i].recipe.label)
+      .addClass(itemIsFav ? 'glyphicon glyphicon-heart':'glyphicon glyphicon-heart-empty')
+.attr('id', results[i].recipe.label)
       // recipeBtnDiv.append(favoriteBtnDiv.addClass('heart fa fa-heart-o'));
 
       recipeBtnDiv.append(activityBtn)
@@ -140,6 +143,27 @@ function displayRecipes () {
         })
       }
     }
+    $('.glyphicon').on("click", function(){
+      let recId = $(this).parent().find("a").attr("href");
+      let addItem = $(this).hasClass("glyphicon-heart-empty");  
+      if(addItem){
+           $(this).removeClass("glyphicon-heart-empty");
+           $(this).addClass("glyphicon-heart");
+           user.favorites.push(recId);
+      } else{
+           $(this).addClass("glyphicon-heart-empty");
+           $(this).removeClass("glyphicon-heart");
+           let rId2 = recId;
+           user.favorites = user.favorites.filter(function(o){
+                return o != rId2;
+           });
+      }            
+      sessionStorage.setItem("errorMessage", null);          
+      saveFavorite(user.uid, recId, addItem);
+      sessionStorage.setItem("user", JSON.stringify(user));
+ });    
+
+
     // $('button').on('click', function () {
     //   let recId = this.id
     //   console.log(recId)
