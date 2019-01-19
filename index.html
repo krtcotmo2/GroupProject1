@@ -104,7 +104,9 @@
                     });
                     $(“#logInApp”).on(‘click’, function (event) {
                         event.preventDefault();
-                        logInUser($(“#exampleInputEmail1").val().trim(), $(“#exampleInputPassword1”).val().trim());
+                         let email = $(“#exampleInputEmail1").val().trim(); 
+                         let pass = $(“#exampleInputPassword1”).val().trim();
+                        logInUser(email, pass);
                    })
 
                    $(“#submitProf”).on(‘click’, function (event) {
