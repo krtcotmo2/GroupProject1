@@ -164,7 +164,8 @@ function displayRecipes() {
                          });
                     }
                     sessionStorage.setItem("errorMessage", null);
-                    saveFavorite(user.uid, recId, addItem);
+                    let theUID = user.uid;
+                    saveFavorite(theUID, recId, addItem);
                     sessionStorage.setItem("user", JSON.stringify(user));
                });
           }
