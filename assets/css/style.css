@@ -1,0 +1,18 @@
+.navbar {
+background: #2493b0;
+}
+body{background: none;
+color:#e9c44a !important;}
+
+.NavBar_MapTypeButtonContainerWrapper{display:none;}
+
+@media screen and (max-width: 992px) {
+  html {
+    background-color: #2493b0;
+  }
+  /* body{none !important} */
+}
+.NavBar_MapTypeButtonContainerWrapper{display:none;}
+#myMap {
+     min-height:400px;
+}
