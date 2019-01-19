@@ -14,21 +14,35 @@
 </head>
 
 <body>
-    <div class="topPicCont">
-        <img id="logo" class="topPic" alt="MNM!" src="images/MNM.jpg">
-    </div>
-    <nav class="navbar navbar-default">
-        <div class="container-fluid">
 
-            <!-- <div class="navbar-header"> -->
-            <span class="navbar-brand">
-                <img id="logo" class="img-responsive logoImg" alt="MNM Logo" src="images/MNM-logo.png">
+         <a class=“navbar-brand” href=“#”>My Next Meal</a>
+         <!-- <img src=“./assets/images/background.gif” width=“30" height=“30” alt=“”> -->
+         <button class=“navbar-toggler” type=“button” data-toggle=“collapse” data-target=“#navbarTogglerDemo02"
+              aria-controls=“navbarTogglerDemo02” aria-expanded=“false” aria-label=“Toggle navigation”>
+              <span class=“navbar-toggler-icon”></span>
+         </button>          <div class=“collapse navbar-collapse” id=“navbarTogglerDemo02">
+              <ul class=“navbar-nav mr-auto mt-2 mt-lg-0”>
+                   <li class=“nav-item active”>
+                        <a class=“nav-link” href=“search.html”>Home<span class=“sr-only”>(current)</span></a>
+                   </li>
+                   <li class=“nav-item”>git
+                        <a class=“nav-link” href=“search.html”>Search by Ingredient</a>
+                   </li>
+                   <li class=“nav-item”>
+                        <a class=“nav-link” href=“categories.html”>Categories</a>
+                   </li>
+                   <li class=“nav-item”>
+                        <a class=“nav-link” href=“random.html”>Random Search</a>
+                   </li>
+                   <li class=“nav-item”>
+                        <button type=“button” class=“nav-link bg-transparent border-0” id=“mapsButton”>Maps</button>
+                        <!-- <button type=“button” id=“submitProf” class=“btn btn-warning”>Submit</button> -->
+                   </li>
+                   <li class=“nav-item”>
+                        <a class=“nav-link” href=“aboutUs.html”>About Us</a>
+                   </li>
+              </ul>          </div>
 
-            </span>
-            <!-- </div> -->
-        </div>
-        <div class="navColor">
-        </div>
     </nav>
     <div class="container" id="mainContainer">
 
@@ -44,6 +58,9 @@
                                 <div class="form-group">
                                     <input type="search" class="form-control" id="ingredientsSearchBar" placeholder="Ex. Spinach">
                                     <button type="submit" class="btn btn-default" id="ingredientsSearchBtn">Search</button>
+
+                                    <button type="submit" class="btn btn-default" id="ingredientsRandomBtn">Random</button>
+
                                 </div>
                             </form>
                         </div>
