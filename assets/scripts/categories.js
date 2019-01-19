@@ -1,10 +1,7 @@
 const appId = '1ca7c14f'
 const appKey = '6ad5a627d4938d3b00d919649e31dc4d'
 const url = 'https://api.edamam.com/search?'
-user={
-     uid:"EeOYdNst77YW2x2KDtv8O6b6tVp1",
-     favorites:["http://www.seriouseats.com/recipes/2013/04/gluten-free-flourless-peanut-butter-cookies-recipe.html"]
-}
+
 $.ajaxPrefilter(function (options) {
   if (options.crossDomain && jQuery.support.cors) {
     let http = window.location.protocol === 'http:' ? 'http:' : 'https:'
