@@ -16,3 +16,12 @@ color:#e9c44a !important;}
 #myMap {
      min-height:400px;
 }
+html{
+     background-repeat: no-repeat;
+     background-size: cover;
+  }
+
+#mapsButton {
+     background: none;
+     border: none;
+  }
