@@ -150,8 +150,9 @@ function displayRecipes (arg) {
                          return o != rId2;
                     });
                }            
-               sessionStorage.setItem("errorMessage", null);          
-               saveFavorite(user.uid, recId, addItem);
+               sessionStorage.setItem("errorMessage", null); 
+	     let theUID = user.uid;
+               saveFavorite(theUID, recId, addItem);
                sessionStorage.setItem("user", JSON.stringify(user));
           });    
           }
