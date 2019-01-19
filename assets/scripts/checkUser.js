@@ -10,6 +10,7 @@ let errorMessage, user = {
 if(sessionStorage.getItem("user")==undefined){
      window.location.href = 'index.html';
 }else{
-     user = sessionStorage.getItem(JSON.parse("user"));
+     let  userString = sessionStorage.getItem("user");
+     user = JSON.parse(userString);
      errorMessage = sessionStorage.getItem("errorMessage");
 }
