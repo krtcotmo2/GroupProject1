@@ -102,28 +102,27 @@
                          $("#form-submit").css("display", "block");
                          $("#signUpForm").css("display", "none");
                     });
-                    $(“#logInApp”).on(‘click’, function (event) {
+                    $("#logInApp").on('click', function (event) {
                         event.preventDefault();
-                         let email = $(“#exampleInputEmail1").val().trim(); 
-                         let pass = $(“#exampleInputPassword1”).val().trim();
+                         let email = $("#exampleInputEmail1").val().trim(); 
+                         let pass = $("#exampleInputPassword1").val().trim();
                         logInUser(email, pass);
                    })
-
-                   $(“#submitProf”).on(‘click’, function (event) {
+                   $("#submitProf").on('click', function (event) {
                         event.preventDefault();
-                        if ($(“#inputPassword4”).val().trim() != $(“#inputPassword5").val().trim()) {
-                             errorMessage = “Passwords do not match”;
-                             sessionStorage.setItem(“errorMessage”, errorMessage);
+                        if ($("#inputPassword4").val().trim() != $("#inputPassword5").val().trim()) {
+                             errorMessage = "Passwords do not match";
+                             sessionStorage.setItem("errorMessage", errorMessage);
                              let mod = `<div class="modal" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true"><div class="modal-dialog" role="document"><div class="modal-content"><div class="modal-header"><h5 class="modal-title" id="exampleModalLabel">Login Error</h5><button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button></div><div class="modal-body">${errorMessage}</div> <div class="modal-footer"><button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button></div></div></div></div>`;
-                             $(“body”).append(mod);
-                             $(“#exampleModal”).modal(‘show’);
-                             $(“#exampleModal”).on(‘hidden.bs.modal’, function () {
+                             $("body").append(mod);
+                             $("#exampleModal").modal('show');
+                             $("#exampleModal").on('hidden.bs.modal', function () {
                                   $(this).remove();
                              });
                              return;
                         }
-                        let email = $(“#inputAddress”).val().trim();
-                        let pass = $(“#inputPassword4”).val().trim();
+                        let email = $("#inputAddress").val().trim();
+                        let pass = $("#inputPassword4").val().trim();
                         createUser(email, pass);
                    })
                </script>
