@@ -1,98 +1,149 @@
 <!DOCTYPE html>
-<html>
+<html lang="en" style="background-image:url('./assets/images/background.gif')">
 
 <head>
-    <meta charset="utf-8">
-    <title>MNM</title>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u"
-        crossorigin="anonymous">
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa"
-        crossorigin="anonymous"></script>
-    <link rel="stylesheet" type="text/css" href="css/style.css">
+     <meta charset="UTF-8">
+     <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
+     <meta http-equiv="X-UA-Compatible" content="ie=edge">
+     <link rel="stylesheet" href="./assets/css/reset.css">
+     <link href="https://use.fontawesome.com/releases/v5.0.6/css/all.css" rel="stylesheet">
+     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/js/bootstrap.min.js" integrity="sha384-B0UglyR+jN6CkvvICOB2joaf5I4l3gm9GU6Hc1og6Ls7i6U/mkkaduKaBhlAXv9k"
+          crossorigin="anonymous"></script>
+     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO"
+          crossorigin="anonymous">
+     <link rel="stylesheet" href="./assets/css/style.css">
+     <link rel="stylesheet" href="./assets/css/index.css">
 
 </head>
 
 <body>
-    <div class="topPicCont">
-        <img id="logo" class="topPic" alt="MNM!" src="images/MNM.jpg">
-    </div>
-    <nav class="navbar navbar-default">
-        <div class="container-fluid">
+     <nav class="navbar navbar-expand-lg navbar-dark" style="background-color: #2493b0;">
+          <a class="navbar-brand" href="#">My Next Meal</a>
+          <!-- <img src="./assets/images/background.gif" width="30" height="30" alt=""> -->
+          <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarTogglerDemo02"
+               aria-controls="navbarTogglerDemo02" aria-expanded="false" aria-label="Toggle navigation">
+               <span class="navbar-toggler-icon"></span>
+          </button>
 
-            <!-- <div class="navbar-header"> -->
-            <span class="navbar-brand">
-                <img id="logo" class="img-responsive logoImg" alt="MNM Logo" src="images/MNM-logo.png">
+          <div class="collapse navbar-collapse" id="navbarTogglerDemo02">
+               <ul class="navbar-nav mr-auto mt-2 mt-lg-0">
+                    <li class="nav-item active">
+                         <a class="nav-link" href="search.html">Home</a>
+                    </li>
+                    <li class="nav-item">
+                         <a class="nav_btns nav-selected" style="color: #f3bb54">Search by Ingredient<span class="sr-only">(current)</span></a>
+                    </li>
+                    <li class="nav-item">
+                         <a class="nav-link" href="categories.html">Categories</a>
+                    </li>
+                   
+                    <li class="nav-item">
+                         <a class="nav-link" href="random.html">Random Search</a>
+                    </li>
+                    <li class="nav-item">
+                         <button type="button" class="nav-link bg-transparent border-0" id="mapsButton">Maps</button>
+                         <!-- <button type="button" id="submitProf" class="btn btn-warning">Submit</button> -->
+                    </li>
+                    <li class="nav-item">
+                         <a class="nav-link" href="aboutUs.html">About Us</a>
+                    </li>
+               </ul>
 
-            </span>
-            <!-- </div> -->
-        </div>
-        <div class="navColor">
-        </div>
-    </nav>
-    <div class="container" id="mainContainer">
+          </div>
+     </nav>
+     <!-- <div class="topPicCont">
+          <img id="logo" class="topPic" alt="MNM!" src="images/MNM.jpg">
+     </div>
+     <nav class="navbar navbar-default">
+          <div class="container-fluid">
 
-        <div class="row">
-            <div class="col-md-3">
-                <div>
+               <div class="navbar-header"> -->
+     <!-- <span class="navbar-brand">
+                    <img id="logo" class="img-responsive logoImg" alt="MNM Logo" src="images/MNM-logo.png"> -->
+
+     <!-- </span> -->
+     <!-- </div> -->
+     <!-- </div>
+          <div class="navColor">
+          </div>
+     </nav> -->
+     <div class="container" id="mainContainer">
+
+          <div class="row">
+               <div class="col-md-3">
+                    <div>
+                         <div class="panel panel-default">
+                              <div class="panel-heading">
+                                   <h3>Search for ingredients</h3>
+                              </div>
+                              <div class="panel-body">
+                                   <form>
+                                        <div class="form-group">
+                                             <input type="search" class="form-control" id="ingredientsSearchBar"
+                                                  placeholder="Ex. Spinach">
+                                             <button type="submit" class="btn btn-default" style="background-color: #CC7722; color: #6c757d"
+                                                  id="ingredientsSearchBtn">Search</button>
+                                        </div>
+                                   </form>
+                              </div>
+                         </div>
+                         <div class="panel-group" id="accordion" role="tablist" aria-multiselectable="true">
+                              <div class="panel panel-default">
+                                   <div class="panel-heading" role="tab" id="headingOne">
+                                        <h4 class="panel-title">
+                                             <a role="button" style="color: #f3bb54;" data-toggle="collapse"
+                                                  data-parent="#accordion" href="#collapseOne" aria-expanded="true"
+                                                  aria-controls="collapseOne">
+                                                  Current ingredients (<span id="numIngredients">0</span>)
+                                             </a>
+                                        </h4>
+                                   </div>
+                                   <div id="collapseOne" class="panel-collapse collapse" role="tabpanel"
+                                        aria-labelledby="headingOne">
+                                        <div class="panel-body" id="ingredients-list"></div>
+                                   </div>
+                              </div>
+                         </div>
+                         <div>
+                              <p class="search-update-text" aria-live="assertive"></p>
+                         </div>
+                    </div>
+
+               </div>
+               <div class="col-md-9">
+                    <div id="displayRecipe" class="col-md-12">
+                    </div>
+               </div>
+          </div>
+          <div class="row">
+               <div class="col-md-12">
+
                     <div class="panel panel-default">
-                        <div class="panel-heading">
-                            <h3>Search for ingredients</h3>
-                        </div>
-                        <div class="panel-body">
-                            <form>
-                                <div class="form-group">
-                                    <input type="search" class="form-control" id="ingredientsSearchBar" placeholder="Ex. Spinach">
-                                    <button type="submit" class="btn btn-default" id="ingredientsSearchBtn">Search</button>
-                                </div>
-                            </form>
-                        </div>
                     </div>
-                    <div class="panel-group" id="accordion" role="tablist" aria-multiselectable="true">
-                        <div class="panel panel-default">
-                            <div class="panel-heading" role="tab" id="headingOne">
-                                <h4 class="panel-title">
-                                    <a role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseOne"
-                                        aria-expanded="true" aria-controls="collapseOne">
-                                        Current ingredients (<span id="numIngredients">0</span>)
-                                    </a>
-                                </h4>
-                            </div>
-                            <div id="collapseOne" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingOne">
-                                <div class="panel-body" id="ingredients-list"></div>
-                            </div>
-                        </div>
-                    </div>
-                   <div><p class="search-update-text" aria-live="assertive"></p></div> 
-                </div>
 
-            </div>
-            <div class="col-md-9">
-                <div id="displayRecipe" class="col-md-12">
-                    <img class="recipeDisplayBckGround" src="images/MainPic.jpg">
-                </div>
-            </div>
-        </div>
-        <div class="row">
-            <div class="col-md-12">
+               </div>
+          </div>
+     </div>
 
-                <div class="panel panel-default">
-                </div>
+     <div class="bottomPicCont">
+          <!-- <h5>&#169; 2019 MNM </h5> -->
+     </div>
 
-            </div>
-        </div>
-    </div>
-
-    <div class="bottomPicCont">
-        <h5>&#169; 2019 MNM </h5>
-        <img class="bottomPic" alt="MNM!" src="images/MNM.jpg">
-    </div>
-
-
-
-    <script src="assets/scripts/app.js"></script>
-
-    </script>
+     <script src="./assets/scripts/checkUser.js"></script>
+     <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
+          crossorigin="anonymous"></script>
+     <script src='https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js'></script>
+     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49"
+          crossorigin="anonymous"></script>
+     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy"
+          crossorigin="anonymous"></script>
+     <script src="https://www.gstatic.com/firebasejs/5.7.3/firebase.js"></script>
+     <script type='text/javascript' src='https://www.bing.com/api/maps/mapcontrol'></script>
+     <script src="./assets/scripts/fbControls.js"></script>
+     <script src="assets/scripts/app.js"></script>
+     <script src="./assets/scripts/bingMaps.js"></script>
+     </script>
 </body>
 
 </html>
+
