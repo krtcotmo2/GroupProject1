@@ -33,12 +33,6 @@ let saveProfile = (uid, email, name, alergies, likes, favorites) => {
                showError('Error in saving favorite ingredients');
                return;
           });
-     db().ref(`users/${uid}/favorites`).set(favorites)
-          .catch(function (error) {
-               errorMessage = error.errorMessage;
-               showError('Error in saving favotire recipes');
-               return;
-          });
 
      //need some code that looks at any changes in the profile data and seets the user obj to that data
 
