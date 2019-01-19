@@ -7,6 +7,7 @@
      <meta http-equiv="X-UA-Compatible" content="ie=edge">
      <link rel="stylesheet" href="./assets/css/reset.css">
 <<<<<<< HEAD
+<<<<<<< HEAD
      <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO"
           crossorigin="anonymous">
      <link href="./assets/css/now-ui-kit.css?v=1.2.0" rel="stylesheet" />
@@ -139,13 +140,14 @@
      <!-- <link href="https://use.fontawesome.com/releases/v5.0.6/css/all.css" rel="stylesheet"> -->
 
      <!-- <link href="./assets/css/bootstrap.min.css" rel="stylesheet" /> -->
+=======
+     <link href="https://use.fontawesome.com/releases/v5.0.6/css/all.css" rel="stylesheet">
+>>>>>>> feat/searchcat
      <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/js/bootstrap.min.js" integrity="sha384-B0UglyR+jN6CkvvICOB2joaf5I4l3gm9GU6Hc1og6Ls7i6U/mkkaduKaBhlAXv9k"
           crossorigin="anonymous"></script>
      <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO"
           crossorigin="anonymous">
      <link rel="stylesheet" href="./assets/css/style.css">
-     <!-- <link rel="stylesheet" href="./assets/css/now-ui-kit.css"> -->
-     <!-- <link rel="stylesheet" href="./assets/css/demo.css"> -->
      <link rel="stylesheet" href="./assets/css/index.css">
 </head>
 
@@ -154,7 +156,7 @@
 
 
 
-<body style="background:none">
+<body>
      <nav class="navbar navbar-expand-lg navbar-dark" style="background-color: #2493b0;">
           <a class="navbar-brand" href="#">My Next Meal</a>
           <!-- <img src="./assets/images/background.gif" width="30" height="30" alt=""> -->
@@ -165,30 +167,6 @@
 
           <div class="collapse navbar-collapse" id="navbarTogglerDemo02">
                <ul class="navbar-nav mr-auto mt-2 mt-lg-0">
-                    <li class="nav-item active">
-                         <a class="nav-link" href="#">Home<span class="sr-only">(current)</span></a>
-                    </li>
-                    <li class="nav-item">
-                         <a class="nav-link" href="#">Categories</a>
-                    </li>
-                    <li class="nav-item">
-                         <a class="nav-link" href="#">Search by Ingredient</a>
-                    </li>
-                    <li class="nav-item">
-                         <a class="nav-link" href="#">Random Search</a>
-                    </li>
-                    <li class="nav-item">
-                         <button type="button" class="nav-link" id="mapsButton">Maps</button>
-                         <!-- <button type="button" id="submitProf" class="btn btn-warning">Submit</button> -->
-                    </li>
-                    <li class="nav-item">
-                         <a class="nav-link" href="#">About Us</a>
-                    </li>
-               </ul>
-               <form class="form-inline my-2 my-lg-0">
-                    <input class="form-control mr-sm-2" type="search" placeholder="Search">
-                    <button class="btn btn-outline-warning my-2 my-sm-0" type="submit">Search</button>
-               </form>
           </div>
      </nav>
      <!-- End Navbar -->
@@ -232,8 +210,8 @@
                                    <input type="password" class="form-control" id="inputPassword4" placeholder="Password">
                               </div>
                               <div class="form-group col-md-6">
-                                   <label for="inputPassword4"> Confirm Password</label>
-                                   <input type="password" class="form-control" id="inputPassword4" placeholder="Password">
+                                   <label for="inputPassword5"> Confirm Password</label>
+                                   <input type="password" class="form-control" id="inputPassword5" placeholder="Password">
                               </div>
                          </div>
                          <button type="button" id="submitProf" class="btn btn-warning">Submit</button>
@@ -268,13 +246,31 @@
 
                     });
 
-                    // $("#mapsButton").on('click', function (event) {
-                    //      event.preventDefault()
-                    //      $("#").
+                    $("#logInApp").on('click', function (event) {
+                         event.preventDefault();
+                         logInUser($("#exampleInputEmail1").val().trim(), $("#exampleInputPassword1").val().trim());
+                    })
 
-                    // });
+                    $("#submitProf").on('click', function (event) {
+                         event.preventDefault();
+                         if ($("#inputPassword4").val().trim() != $("#inputPassword5").val().trim()) {
+                              errorMessage = "Passwords do not match";
+                              sessionStorage.setItem("errorMessage", errorMessage);
+                              let mod = `<div class="modal" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true"><div class="modal-dialog" role="document"><div class="modal-content"><div class="modal-header"><h5 class="modal-title" id="exampleModalLabel">Login Error</h5><button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button></div><div class="modal-body">${errorMessage}</div> <div class="modal-footer"><button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button></div></div></div></div>`;
+                              $("body").append(mod);
+                              $("#exampleModal").modal('show');
+                              $("#exampleModal").on('hidden.bs.modal', function () {
+                                   $(this).remove();
+                              });
+                              return;
+                         }
+                         let email = $("#inputAddress").val().trim();
+                         let pass = $("#inputPassword4").val().trim();
+                         createUser(email, pass);
+                    })
                </script>
 </body>
+<<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
 </html>
@@ -287,3 +283,7 @@
 </html>
 >>>>>>> 291af7a55165e5748e61ea68a87610b37658dc9b
 >>>>>>> d6697bd2375697ec4f40136dab6d2d89d9700d93
+=======
+
+</html>
+>>>>>>> feat/searchcat
