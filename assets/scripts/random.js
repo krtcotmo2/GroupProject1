@@ -170,7 +170,7 @@ function displayRecipes() {
         sessionStorage.setItem("user", JSON.stringify(user));
       });
     }
-  });
+ 
 }
 
 $("#numIngredients").html(searchIngredients.length);
